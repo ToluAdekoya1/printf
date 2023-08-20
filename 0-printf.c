@@ -28,6 +28,18 @@ void print_string(const char *s, int *count)
 		(*count)++;
 	}
 }
+
+/**
+ * print_integer - prints integer
+ * @j: param1
+ * @count: param2
+*/
+
+void print_integer(int j, int *count)
+{
+	printf("%d", j);
+	(*count)++;
+}
 /**
  * _printf - produces output according to a format
  * @format: character string
@@ -38,7 +50,7 @@ int _printf(const char *format, ...)
 {
 	int count = 0;
 	va_list args;
-	int i, c;
+	int i, c, j;
 	char *s;
 
 	va_start(args, format);
@@ -57,10 +69,13 @@ int _printf(const char *format, ...)
 				s = va_arg(args, char *);
 				print_string(s, &count);
 			}
-			else if (format[i] == '%')
+			else if (format[i] == 'i' || format[i] == 'd')
 			{
-				print_char('%', &count);
+				j = va_arg(args, int);
+				print_integer(j, &count);
 			}
+			else if (format[i] == '%')
+				print_char('%', &count);
 		}
 		else
 		{
