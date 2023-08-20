@@ -37,7 +37,7 @@ void print_string(const char *s, int *count)
 
 void print_integer(int j, int *count)
 {
-	printf("%d", j);
+	putchar(j);
 	(*count)++;
 }
 /**
